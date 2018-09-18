@@ -44,8 +44,8 @@ input("Aperte Enter para continuar...")
 
 print("\nTAREFA 2: Imprimindo o gênero das primeiras 20 amostras")
 
-for i in range(0, 19):
-    print(data_list[i][6])
+for line in data_list[:20]:
+    print(line[6])
 
 
 # Ótimo! Nós podemos pegar as linhas(samples) iterando com um for, e as colunas(features) por índices.
@@ -138,8 +138,14 @@ def most_popular_gender(data_list: list):
         
     """
     answer = ''
-    counter = count_gender(data_list)
-    answer = 'Male' if counter[0] > counter[1] else 'Female' if counter[0] < counter[1] else 'Equal'
+    male, female = count_gender(data_list)
+    answer = 'Equal'
+    
+    if male > female:
+        answer = 'Male'
+    elif female > male:
+        answer = 'Female'
+    
     return answer
 
 
