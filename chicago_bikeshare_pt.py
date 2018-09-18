@@ -238,7 +238,7 @@ def median(data: list):
 not_sorted_trip_duration_list = [int(x) for x in column_to_list(data_list, 2)]
 trip_duration_list = sorted(not_sorted_trip_duration_list)
 min_trip = trip_duration_list[0]
-max_trip = trip_duration_list[len(trip_duration_list) - 1]
+max_trip = trip_duration_list[-1]
 mean_trip = sum(x for x in trip_duration_list)/len(trip_duration_list)
 median_trip = median(trip_duration_list)
 
