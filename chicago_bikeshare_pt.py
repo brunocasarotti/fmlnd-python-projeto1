@@ -284,7 +284,7 @@ answer = "yes"
 
 def count_items(column_list: list):
     """
-    Função que conta os tipos de items em um array, sem definir tipos os tipos.
+    Função que conta os tipos de itens em um array, sem definir os tipos previamente.
     Argumentos:
         column_list: Lista contendo os items a serem contabilizados.
     Retorna:
