@@ -220,7 +220,7 @@ input("Aperte Enter para continuar...")
 male, female = count_gender(data_list)
 print("\nTAREFA 8: Por que a condição a seguir é Falsa?")
 print("male + female == len(data_list):", male + female == len(data_list))
-div = str(len([x for x in column_to_list(data_list, -2) if not x]))
+dif = str(len([x for x in column_to_list(data_list, -2) if not x]))
 answer = "Porque " + dif + " pessoas não informaram o seu gênero."
 print("resposta:", answer)
 
