@@ -83,9 +83,13 @@ input("Aperte Enter para continuar...")
 # Agora sabemos como acessar as features, vamos contar quantos Male (Masculinos) e Female (Femininos) o dataset tem
 # TAREFA 4
 # TODO: Conte cada gênero. Você não deveria usar uma função parTODO isso.
-male = sum(1 if x == 'Male' else 0 for x in column_to_list(data_list, -2))
-female = sum(1 if x == 'Female' else 0 for x in column_to_list(data_list, -2))
-
+male = 0
+female = 0
+for genero in column_to_list(data_list, -2):
+    if genero == 'Female':
+        female += 1
+    elif genero == 'Male':
+        male += 1
 
 # Verificando o resultado
 print("\nTAREFA 4: Imprimindo quantos masculinos e femininos nós encontramos")
@@ -109,8 +113,13 @@ def count_gender(data_list: list):
         Retorne uma lista [male, female]
         
     """
-    male = sum(1 if x == 'Male' else 0 for x in column_to_list(data_list, -2))
-    female = sum(1 if x == 'Female' else 0 for x in column_to_list(data_list, -2))
+    male = 0
+    female = 0
+    for genero in column_to_list(data_list, -2):
+        if genero == 'Female':
+            female += 1
+        elif genero == 'Male':
+            male += 1
     return [male, female]
 
 
@@ -184,8 +193,12 @@ def count_user_types(user_type_list: list):
     """
     count = []
     list_of_types = column_to_list(data_list, -3)
-    for i in user_type_list:
-        count.append(sum(1 for x in list_of_types if x == i))
+    for user_type in user_type_list:
+        counter = 0
+        for x in list_of_types:
+            if x == user_type:
+                counter += 1
+        count.append(counter)
     return count
 
 print("\nTAREFA 7: Verifique o gráfico!")
@@ -207,7 +220,8 @@ input("Aperte Enter para continuar...")
 male, female = count_gender(data_list)
 print("\nTAREFA 8: Por que a condição a seguir é Falsa?")
 print("male + female == len(data_list):", male + female == len(data_list))
-answer = "Porque " + str(sum(1 for x in column_to_list(data_list, -2) if not x)) + " pessoas não informaram o seu gênero."
+div = str(len([x for x in column_to_list(data_list, -2) if not x]))
+answer = "Porque " + dif + " pessoas não informaram o seu gênero."
 print("resposta:", answer)
 
 # ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
@@ -235,11 +249,27 @@ def median(data: list):
         pivot = len(data) // 2
         return (data[pivot - 1] + data[pivot]) / 2.0
 
+def sum_and_count(data: list):
+    """
+    Função que soma e conta os itens em uma lista
+    Argumentos:
+        data: Lista de números
+    Retorna:
+        Array com a soma e a quantidade existente na lista [soma, quantidade]
+    """
+    counter = 0
+    total = 0
+    for x in data:
+        counter += 1
+        total += x
+    return [total, counter]
+
 not_sorted_trip_duration_list = [int(x) for x in column_to_list(data_list, 2)]
 trip_duration_list = sorted(not_sorted_trip_duration_list)
+total, quantidade = sum_and_count(trip_duration_list)
 min_trip = trip_duration_list[0]
 max_trip = trip_duration_list[-1]
-mean_trip = sum(x for x in trip_duration_list)/len(trip_duration_list)
+mean_trip = total/quantidade
 median_trip = median(trip_duration_list)
 
 
@@ -301,7 +331,11 @@ def count_items(column_list: list):
     item_types = list(set(column_list))
     count_items = []
     for item_type in item_types:
-        count_items.append(sum(1 for x in column_list if x == item_type))
+        counter = 0
+        for x in column_list:
+            if x == item_type:
+                counter += 1
+        count_items.append(counter)
     return item_types, count_items
 
 
