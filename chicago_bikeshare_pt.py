@@ -54,6 +54,8 @@ for line in data_list[:20]:
 input("Aperte Enter para continuar...")
 # TAREFA 3
 # TODO: Crie uma função para adicionar as colunas(features) de uma lista em outra lista, na mesma ordem
+
+
 def column_to_list(data: list, index: int):
     """
     Função para retornar uma coluna a partir de uma matriz
@@ -65,7 +67,8 @@ def column_to_list(data: list, index: int):
         
     """
     column_list = [data[i][index] for i in range(0, len(data))]
-    # Dica: Você pode usar um for para iterar sobre as amostras, pegar a feature pelo seu índice, e dar append para uma lista
+    # Dica: Você pode usar um for para iterar sobre as amostras, pegar a feature pelo seu índice,
+    # e dar append para uma lista
     return column_list
 
 
